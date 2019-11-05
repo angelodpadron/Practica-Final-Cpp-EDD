@@ -8,29 +8,39 @@ struct HechizoSt {
 
 /// Proposito: crea un hechizo dado un nombre y un poder
 Hechizo crearHechizo(string nombre, int poder) {
-   COMPLETAR(crearHechizo);
+   Hechizo h = new HechizoSt;
+   h -> nombre = nombre;
+   h -> poder = poder;
+
+   return h;
 }
 
 /// Proposito: retorna el nombre del hechizo
 string nombreHechizo(Hechizo h) {
-   COMPLETAR(nombreHechizo);
+
+   return h -> nombre;
 }
 
 /// Proposito: retorna el poder de un hechizo
 int poderHechizo(Hechizo h) {
-   COMPLETAR(poderHechizo);
+
+   return h -> poder;
 }
 
 /// Proposito: indica si un hechizo tiene el mismo nombre que otro
 /// Costo: O(1)
 bool mismoHechizo(Hechizo h1, Hechizo h2) {
-   COMPLETAR(mismoHechizo);
+
+
+   return nombreHechizo(h1) == nombreHechizo(h2);
 }
 
 /// Proposito: indica si el primer hechizo es mas poderoso que el otro
 /// Costo: O(1)
 bool masPoderoso(Hechizo h1, Hechizo h2) {
-   COMPLETAR(masPoderoso);
+
+   return poderHechizo(h1) > poderHechizo(h2);
+
 }
 
 void printHechizo(Hechizo h) {
@@ -42,6 +52,6 @@ void printHechizo(Hechizo h) {
 
 /// Proposito: libera la memoria
 void destroyHechizo(Hechizo h) {
-   COMPLETAR(destroyHechizo);
+   delete h;
 }
 
