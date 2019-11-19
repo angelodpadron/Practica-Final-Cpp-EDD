@@ -54,3 +54,38 @@
 1570916433 source:c:\users\sawad\dropbox\profe unq\ed\tps\2019s2\tp_esqueleto\hechizo\hechizo.cpp
 	"hechizo.h"
 
+1573836797 source:c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\hechizo\hechizo.cpp
+	"hechizo.h"
+	"../common/Common.h"
+
+1573836797 c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\hechizo\hechizo.h
+	<iostream>
+
+1573836797 c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\common\common.h
+	<ctime>
+	<cstdio>
+	<cstdlib>
+	<cassert>
+	<iostream>
+
+1573836797 source:c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\set\main.cpp
+	<iostream>
+	"test_set.h"
+
+1573836797 c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\set\test_set.h
+	"set.h"
+	"../common/Test.h"
+
+1573836797 c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\set\set.h
+	"../hechizo/hechizo.h"
+
+1573836797 c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\common\test.h
+	<iostream>
+	<string>
+	<cstdlib>
+	<vector>
+
+1573848177 source:c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\set\set.cpp
+	"set.h"
+	"../common/Common.h"
+
