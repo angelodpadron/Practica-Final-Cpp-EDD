@@ -50,5 +50,6 @@ bool sabeMasMago(Mago m1, Mago m2) {
 /// Proposito: destruye toda la memoria de un mago, incluyendo el conjunto de hechizos
 /// Costo: O(n)
 void destroyMago(Mago m) {
-   //COMPLETAR(destroyMago);
+   destroyS(m -> hechizos);
+   delete m;
 }

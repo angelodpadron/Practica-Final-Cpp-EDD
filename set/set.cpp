@@ -1,6 +1,7 @@
 #include "set.h"
 #include "../common/Common.h"
 
+
 struct Node {
    Hechizo elem; // el elemento que este nodo almacena
    Node* next; // siguiente nodo de la cadena de punteros
@@ -39,34 +40,20 @@ int sizeS(Set s) {
 /// Costo: O(h), h = cantidad de hechizos
 bool belongsS(Hechizo h, Set s) {
 
-    if (s == NULL){
-        cout << "Error, coleccion nula. /n";
-        exit(1);
+    Node* actual = s -> first;
+    while (actual != NULL && !mismoHechizo(actual -> elem, h)){
+        actual = actual -> next;
     }
 
-    Set temporal = s;
+    return actual != NULL;
 
-    while (temporal -> first != NULL){
-        if (temporal -> first -> elem == h){
-            return true;
-        }
-        temporal -> first = temporal -> first -> next;
-    }
 
-   return false;
 }
 
 /// Proposito: agrega un hechizo al conjunto
 /// Costo: O(h), h = cantidad de hechizos
 void addS(Hechizo h, Set s) {
     if (! belongsS(h, s)){
-
-    /*
-    if (belongsS(h, s)){
-        cout << "El hechizo ya existe en la colección. /n";
-        exit(1);
-    }
-    */
 
         Node* n = new Node;
         n -> elem = h;
@@ -80,39 +67,62 @@ void addS(Hechizo h, Set s) {
 /// Costo: O(h), h = cantidad de hechizos
 void removeS(Hechizo h, Set s) {
 
-    if (belongsS(h,s)){
+    Node * anterior = NULL;
+    Node* n = s->first;
+    while (n != NULL &&(!mismoHechizo(n->elem, h))){
 
-    /*
-    if (! belongsS(h,s)){
-        cout << "El hechizo no existe en la colección. /n";
-        exit(1);
+        anterior = n;
+        n = n->next;
     }
-    */
+    if(anterior == NULL){
 
-        Set temporalS = s;
-        Node* temporalN = temporalS -> first;
-
-        while (temporalS -> first != NULL && temporalS -> first -> elem != h){
-            temporalS -> first = temporalS -> first -> next;
-            temporalN = temporalS -> first;
-        }
-
-        s -> first = temporalN -> next;
-        s -> size--;
-
-        delete temporalN;
-        return;
+        delete s->first ;
+        s->size = 0;
+        s->first = NULL;
+    }
+    else{
+        n = n->next;
+        anterior->next = n;
+        s->size--;
     }
 }
+
 
 /// Proposito: borra toda la memoria consumida por el conjunto (pero no la de los hechizos)
 /// Costo: O(n)
 void destroyS(Set s) {
-   //COMPLETAR(destroyS);
+
+    Node * actual  = s -> first;
+
+    while (actual!= NULL){
+        Node * aux = actual -> next;
+        delete actual;
+        actual = aux;
+    }
+
+    delete s ;
 }
 
 /// Proposito: retorna un nuevo conjunto que es la union entre ambos (no modifica estos conjuntos)
 /// Costo: O(h^2), h = cantidad de hechizos
 Set unionS(Set s1, Set s2) {
-   //COMPLETAR(unionS);
+
+    Set join = emptyS();
+
+    Node* n1 = s1 -> first;
+    Node* n2 = s2 -> first;
+
+    //elementos de primer set a join
+    while (n1 != NULL){
+        addS(n1 -> elem, join);
+        n1 = n1 -> next;
+    }
+
+    //elementos de primer set a join
+    while (n2 != NULL){
+        addS(n2 -> elem, join);
+        n2 = n2 -> next;
+    }
+
+    return join;
 }
