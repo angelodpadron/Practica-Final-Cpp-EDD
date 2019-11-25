@@ -13,17 +13,35 @@ struct MapSt {
    BSTNode* root;
 };
 
-/// Proposito: crea un diccionario vacío.
+/// Proposito: crea un diccionario vacï¿½o.
 /// O(1)
 Map emptyM() {
-   COMPLETAR(emptyM);
+
+   Map m = new MapSt;
+   m -> root = NULL;
+
+   return m;
 }
 
 /// Proposito: devuelve el mago asociado a un nombre,
 /// Si la clave no esta en el diccionario devuelve NULL.
 /// O(log n), n es la cantidad de claves
 Mago lookupBST(string nombre, BSTNode* node) {
-   COMPLETAR(lookupBST);
+
+    if (node == NULL){
+        return NULL;
+    }
+
+    while (node != NULL && node -> key != nombre){
+        if (node -> key < nombre){
+            lookupBST(nombre, node -> left);
+        }
+        else{
+            lookupBST(nombre, node -> right);
+        }
+    }
+
+    return node ->value;
 }
 
 /// Proposito: Devuelve el mago asociado a un nombre,
@@ -179,21 +197,24 @@ void checkIfRotate(BSTNode* node) {
 /// puede haber cambiado.
 /// O(log n), n es la cantidad de claves
 BSTNode* insertBST(string nombre, Mago mago, BSTNode* node) {
-   if (node == NULL) return newNode(nombre, mago);
-   if (node->key == nombre) {
-      COMPLETAR(insertBST);
-   }
-   if (nombre < node->key) {
-      COMPLETAR(insertBST);
-      // Tener en cuenta que hay que modificar la rama
-      // izquierda
-   } else {
-      COMPLETAR(insertBST);
-      // Tener en cuenta que hay que modificar la rama
-      // derecha
-   }
-   checkIfRotate(node);
-   return node;
+    if (node == NULL) return newNode(nombre, mago);
+
+    if (node->key == nombre) {
+        node ->value = mago;
+    }
+    else{
+
+        if (nombre < node->key) {
+            return (insertBST(nombre, mago, node -> left));
+        }
+
+        else {
+            return (insertBST(nombre, mago, node -> right));
+        }
+    }
+
+    checkIfRotate(node);
+    return node;
 }
 
 /// Proposito: inserta una clave k en el diccionario asociada al valor v.
@@ -250,13 +271,25 @@ void deleteM(string nombre, Map m) {
 }
 
 void destroyNode(BSTNode* node) {
-   COMPLETAR(destroyNode);
+
+    if (node == NULL) {
+        return;
+    }
+    else{
+
+        destroyNode(node -> right);
+        destroyNode(node -> left);
+
+        delete(node);
+    }
 }
 
 /// Proposito: libera toda la memoria usada por el diccionario (pero no a los magos)
 /// O(n), n es la cantidad de claves
 void destroyM(Map m) {
-   COMPLETAR(destroyM);
+
+    destroyNode(m -> root);
+    delete m;
 }
 
 // BEGIN IGNORAR
