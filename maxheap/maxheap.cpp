@@ -23,25 +23,30 @@ struct MaxHeapSt {
 /// Proposito: crea una heap vacía.
 /// O(1)
 MaxHeap emptyH() {
-   COMPLETAR(emptyH);
+   MaxHeap mh = new MaxHeapSt;
+   mh ->elems = new Mago [16];
+   mh ->arraySize = 16;
+   mh ->elemCount = 0; //cantidad de elemetos y puntero
+
+   return mh;
 }
 
 /// Proposito: indica si la heap está vacía.
 /// O(1)
 bool isEmptyH(MaxHeap h) {
-   COMPLETAR(isEmptyH);
+   return h -> elemCount == 0;
 }
 
 /// Proposito: indica si la heap está vacía.
 /// O(1)
 int sizeH(MaxHeap h) {
-   COMPLETAR(sizeH);
+    return h -> elemCount;
 }
 
 /// Proposito: devuelve al mago que más hechizos sabe.
 /// O(1)
 Mago maxH(MaxHeap h) {
-   COMPLETAR(maxH);
+   return h -> elems[0];
 }
 
 // Proposito: retorna el índice del hijo izquierdo
@@ -105,8 +110,14 @@ void insertH(Mago m, MaxHeap h) {
    // chequea si tiene que agrandar el array de elementos
    // para garantizar que siempre hay espacio
    checkAgrandar(h);
-   COMPLETAR(insertH);
+
+   h -> elems [h -> elemCount] = m;
+   flotar(h -> elems, h -> elemCount);
+   h -> elemCount++;
+
 }
+
+
 
 // Proposito: intercambia un elemento con alguno de sus hijos si es necesario,
 // dados el array de elementos y el indice del nodo actual
@@ -139,14 +150,17 @@ void hundir(Mago* elems, int elemCount, int i) {
 /// Proposito: borra al mago que más sabe.
 /// O(log n)
 void deleteMax(MaxHeap h) {
-   if (h->elemCount == 0) return; // si esta vacia no hace nada
-   COMPLETAR(deleteMax);
+    if (h->elemCount == 0) return; // si esta vacia no hace nada
+    h -> elems [0] = h -> elems [h -> elemCount -1];
+    h -> elemCount--;
+    hundir(h -> elems, h -> elemCount, 0);
+
 }
 
 /// Proposito: borra la memoria consumida por la heap (no a los magos).
 /// O(1)
 void destroyH(MaxHeap h) {
-   COMPLETAR(destroyH);
+   delete h;
 }
 
 // BEGIN IGNORAR
