@@ -53,7 +53,7 @@ Mago lookupM(string nombre, Map m) {
 
 /// Proposito: Agrega
 /// O(n), n es la cantidad de claves
-void collectDom(vector<string> result, BSTNode* node) {
+void collectDom(vector<string>& result, BSTNode* node) {
    if (node == NULL) return;
    result.push_back(node->key);
    collectDom(result, node->left);
@@ -65,6 +65,7 @@ void collectDom(vector<string> result, BSTNode* node) {
 vector<string> domM(Map m) {
    vector<string> result;
    collectDom(result, m->root);
+   return result;
 }
 
 // Devuelve la altura almacenada en el nodo
