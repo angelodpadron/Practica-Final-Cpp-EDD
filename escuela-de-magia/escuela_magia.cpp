@@ -3,7 +3,7 @@
 
 struct EscuelaDeMagiaSt {
    Set hechizos;
-   map magos;
+   Map magos;
    MaxHeap heap;
 };
 
@@ -34,7 +34,7 @@ void registrar(string nombre, EscuelaDeMagia m) {
 /// Propósito: Devuelve los nombres de los magos registrados en la escuela.
 /// O(m)
 vector<string> magos(EscuelaDeMagia m) {
-   COMPLETAR(magos);
+   domM(m ->magos);
 }
 
 /// Propósito: Devuelve los hechizos que conoce un mago dado.
@@ -55,25 +55,31 @@ int leFaltanAprender(string nombre, EscuelaDeMagia m) {
 /// Precondición: La escuela no está vacía.
 /// O(log m)
 Mago unEgresado(EscuelaDeMagia m) {
-   COMPLETAR(unEgresado);
+   maxH(m ->heap);
 }
 
 /// Propósito: Devuelve la escuela sin el mago que más sabe.
 /// Precondición: La escuela no está vacía.
 /// O(log m)
 void quitarEgresado(EscuelaDeMagia m) {
-   COMPLETAR(quitarEgresado);
+   deleteM(nombreMago(maxH(m ->heap)), m ->magos);     //remover mago que mas sabe del map
+   deleteMax(m ->heap);     //remover mago que mas sabe del heap
+
 }
 
 /// Propósito: Enseña un hechizo a un mago existente, y si el hechizo no existe en la escuela es incorporado a la misma.
 /// O(m . log m + log h)
 void enseniar(Hechizo h, string nombre, EscuelaDeMagia m) {
-   COMPLETAR(enseniar);
+   aprenderHechizo(h, lookupM(nombre, m ->magos));
 }
 
 /// Propósito: Libera toda la memoria creada por la escuela (incluye magos, pero no hechizos).
 void destruirEscuela(EscuelaDeMagia m) {
-   COMPLETAR(destruirEscuela);
+   destroyS(m ->hechizos);
+   destroyM(m ->magos);
+   destroyH(m ->heap);
+
+   delete m;
 }
 
 

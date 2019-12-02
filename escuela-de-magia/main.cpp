@@ -14,25 +14,31 @@ using namespace std;
 /// Proposito: Retorna todos los hechizos aprendidos por los magos.
 /// Eficiencia: ?
 Set hechizosAprendidos(EscuelaDeMagia m) {
-   COMPLETAR(hechizosAprendidos);
+   return hechizosMago(unEgresado(m));
 }
 
-/// Proposito: Indica si existe un mago que sabe todos los hechizos enseÒados por la escuela.
+/// Proposito: Indica si existe un mago que sabe todos los hechizos ense√±ados por la escuela.
 /// Eficiencia: ?
 bool hayUnExperto(EscuelaDeMagia m) {
-   COMPLETAR(hayUnExperto);
+   return leFaltanAprender(nombreMago(unEgresado(m)), m) == 0;
 }
 
-/// Proposito: Devuelve una maxheap con los magos que saben todos los hechizos dados por la escuela, quit·ndolos de la escuela.
+/// Proposito: Devuelve una maxheap con los magos que saben todos los hechizos dados por la escuela, quit√°ndolos de la escuela.
 /// Eficiencia: ?
 MaxHeap egresarExpertos(EscuelaDeMagia m) {
-   COMPLETAR(egresarExpertos);
+    if (hayUnExperto(m)){
+
+
+
+    }
+
+
 }
 
 int main()
 {
     /// Escribir algunas pruebas para las funciones de la interfaz
-    /// de escuela de magia, y tambiÈn las de usuario.
+    /// de escuela de magia, y tambi√©n las de usuario.
     COMPLETAR(main);
     return 0;
 }
