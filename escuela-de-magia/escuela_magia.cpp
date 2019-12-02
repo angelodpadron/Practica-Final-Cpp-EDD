@@ -2,68 +2,76 @@
 #include "../common/Common.h"
 
 struct EscuelaDeMagiaSt {
-   /// COMPLETAR
+   Set hechizos;
+   map magos;
+   MaxHeap heap;
 };
 
-/// PropÛsito: Devuelve una escuela vacÌa.
+/// Prop√≥sito: Devuelve una escuela vac√≠a.
 /// O(1)
 EscuelaDeMagia fundarEscuela() {
-   COMPLETAR(fundarEscuela);
+   EscuelaDeMagia edm = new EscuelaDeMagiaSt;
+   edm ->hechizos = emptyS();
+   edm ->magos = emptyM();
+   edm ->heap = emptyH();
+
+   return edm;
 }
 
-/// PropÛsito: Indica si la escuela est· vacÌa.
+/// Prop√≥sito: Indica si la escuela est√° vac√≠a.
 /// O(1)
 bool estaVacia(EscuelaDeMagia m) {
-   COMPLETAR(estaVacia);
+   return isEmptyH(m ->heap);
 }
 
-/// PropÛsito: Incorpora un mago a la escuela (si ya existe no hace nada).
+/// Prop√≥sito: Incorpora un mago a la escuela (si ya existe no hace nada).
 /// O(log m)
 void registrar(string nombre, EscuelaDeMagia m) {
-   COMPLETAR(registrar);
+   assocM(nombre, crearMago(nombre), m ->magos);    //insercion en map
+   insertH(crearMago(nombre), m ->heap);            //insercion en heap
 }
 
-/// PropÛsito: Devuelve los nombres de los magos registrados en la escuela.
+/// Prop√≥sito: Devuelve los nombres de los magos registrados en la escuela.
 /// O(m)
 vector<string> magos(EscuelaDeMagia m) {
    COMPLETAR(magos);
 }
 
-/// PropÛsito: Devuelve los hechizos que conoce un mago dado.
-/// PrecondiciÛn: Existe un mago con dicho nombre.
+/// Prop√≥sito: Devuelve los hechizos que conoce un mago dado.
+/// Precondici√≥n: Existe un mago con dicho nombre.
 /// O(log m)
 Set hechizosDe(string nombre, EscuelaDeMagia m) {
-   COMPLETAR(hechizosDe);
+   hechizosDe(nombre, m);
 }
 
-/// PropÛsito: Dado un mago, indica la cantidad de hechizos que la escuela ha dado y Èl no sabe.
-/// PrecondiciÛn: Existe un mago con dicho nombre.
+/// Prop√≥sito: Dado un mago, indica la cantidad de hechizos que la escuela ha dado y √©l no sabe.
+/// Precondici√≥n: Existe un mago con dicho nombre.
 /// O(log m)
 int leFaltanAprender(string nombre, EscuelaDeMagia m) {
-   COMPLETAR(leFaltanAprender);
+   return sizeS(m ->hechizos) - sizeS(hechizosDe(nombre, m));
 }
 
-/// PropÛsito: Devuelve el mago que m·s hechizos sabe.
-/// PrecondiciÛn: La escuela no est· vacÌa.
+/// Prop√≥sito: Devuelve el mago que m√°s hechizos sabe.
+/// Precondici√≥n: La escuela no est√° vac√≠a.
 /// O(log m)
 Mago unEgresado(EscuelaDeMagia m) {
    COMPLETAR(unEgresado);
 }
 
-/// PropÛsito: Devuelve la escuela sin el mago que m·s sabe.
-/// PrecondiciÛn: La escuela no est· vacÌa.
+/// Prop√≥sito: Devuelve la escuela sin el mago que m√°s sabe.
+/// Precondici√≥n: La escuela no est√° vac√≠a.
 /// O(log m)
 void quitarEgresado(EscuelaDeMagia m) {
    COMPLETAR(quitarEgresado);
 }
 
-/// PropÛsito: EnseÒa un hechizo a un mago existente, y si el hechizo no existe en la escuela es incorporado a la misma.
+/// Prop√≥sito: Ense√±a un hechizo a un mago existente, y si el hechizo no existe en la escuela es incorporado a la misma.
 /// O(m . log m + log h)
 void enseniar(Hechizo h, string nombre, EscuelaDeMagia m) {
    COMPLETAR(enseniar);
 }
 
-/// PropÛsito: Libera toda la memoria creada por la escuela (incluye magos, pero no hechizos).
+/// Prop√≥sito: Libera toda la memoria creada por la escuela (incluye magos, pero no hechizos).
 void destruirEscuela(EscuelaDeMagia m) {
    COMPLETAR(destruirEscuela);
 }
