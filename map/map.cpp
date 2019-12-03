@@ -206,11 +206,11 @@ BSTNode* insertBST(string nombre, Mago mago, BSTNode* node) {
     else{
 
         if (nombre < node->key) {
-            return (insertBST(nombre, mago, node -> left));
+            node->left = (insertBST(nombre, mago, node -> left));
         }
 
         else {
-            return (insertBST(nombre, mago, node -> right));
+            node -> right = (insertBST(nombre, mago, node -> right));
         }
     }
 
