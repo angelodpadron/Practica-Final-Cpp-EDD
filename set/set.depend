@@ -3,27 +3,39 @@
 	<iostream>
 	"test_set.h"
 
+1573836797 h"
+
 1570921271 source:c:\users\sawad\dropbox\profe unq\ed\tps\2019s2\tp\set\set.cpp
 	"set.h"
 
 1570916433 source:c:\users\sawad\dropbox\profe unq\ed\tps\2019s2\tp\hechizo\hechizo.cpp
 	"hechizo.h"
 
+1570916433 "
+
 1572826891 c:\users\sawad\dropbox\profe unq\ed\tps\2019s2\tp\hechizo\hechizo.h
 	<iostream>
+
+1573836797 
 
 1571081021 c:\users\sawad\dropbox\profe unq\ed\tps\2019s2\tp\set\set.h
 	"../hechizo/hechizo.h"
 
+1573836797 o/hechizo.h"
+
 1570921545 c:\users\sawad\dropbox\profe unq\ed\tps\2019s2\tp\set\test_set.h
 	"set.h"
 	"../common/Test.h"
+
+1573836797 /Test.h"
 
 1570914659 c:\users\sawad\dropbox\profe unq\ed\tps\2019s2\tp\common\test.h
 	<iostream>
 	<string>
 	<cstdlib>
 	<vector>
+
+1573836797 
 
 1570918152 c:\users\sawad\dropbox\profe unq\ed\tps\2019s2\tp\set\set.cpp
 	"set.h"
@@ -58,6 +70,8 @@
 	"hechizo.h"
 	"../common/Common.h"
 
+1574281593 /Common.h"
+
 1573836797 c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\hechizo\hechizo.h
 	<iostream>
 
@@ -86,6 +100,41 @@
 	<vector>
 
 1574281593 source:c:\users\angel\onedrive\escritorio\tp c++\angelo-padron-tp-ed-2019s2\set\set.cpp
+	"set.h"
+	"../common/Common.h"
+
+1575249831 source:/home/angelo/Escritorio/angelo-padron-tp-ed-2019s2/hechizo/hechizo.cpp
+	"hechizo.h"
+	"../common/Common.h"
+
+1575249831 /home/angelo/Escritorio/angelo-padron-tp-ed-2019s2/hechizo/hechizo.h
+	<iostream>
+
+1575249831 /home/angelo/Escritorio/angelo-padron-tp-ed-2019s2/common/Common.h
+	<ctime>
+	<cstdio>
+	<cstdlib>
+	<cassert>
+	<iostream>
+
+1575249831 source:/home/angelo/Escritorio/angelo-padron-tp-ed-2019s2/set/main.cpp
+	<iostream>
+	"test_set.h"
+
+1575249831 /home/angelo/Escritorio/angelo-padron-tp-ed-2019s2/set/test_set.h
+	"set.h"
+	"../common/Test.h"
+
+1575249831 /home/angelo/Escritorio/angelo-padron-tp-ed-2019s2/set/set.h
+	"../hechizo/hechizo.h"
+
+1575249831 /home/angelo/Escritorio/angelo-padron-tp-ed-2019s2/common/Test.h
+	<iostream>
+	<string>
+	<cstdlib>
+	<vector>
+
+1575249831 source:/home/angelo/Escritorio/angelo-padron-tp-ed-2019s2/set/set.cpp
 	"set.h"
 	"../common/Common.h"
 
