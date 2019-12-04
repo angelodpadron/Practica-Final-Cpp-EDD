@@ -14,11 +14,18 @@ using namespace std;
 /// Proposito: Retorna todos los hechizos aprendidos por los magos.
 /// Eficiencia: ?
 Set hechizosAprendidos(EscuelaDeMagia m) {
-   return hechizosMago(unEgresado(m));
+   Set hechizos = emptyS();
+   vector <string> nombreMagos = magos(m);
+
+   for (size_t i = 0; i < nombreMagos.size(); i++){         ///orden m, m = cant magos
+        unionS(hechizosDe(nombreMagos[i], m), hechizos);    ///orden h^2 * O(log m), h = cantidad de hechizos, m = cantidad magos (claves en map)
+   }
+
+   return hechizos;
 }
 
 /// Proposito: Indica si existe un mago que sabe todos los hechizos enseñados por la escuela.
-/// Eficiencia: ?
+/// Eficiencia: O(1)
 bool hayUnExperto(EscuelaDeMagia m) {
    return leFaltanAprender(nombreMago(unEgresado(m)), m) == 0;
 }
@@ -73,6 +80,7 @@ void testRegistrarMago(){
 
     //excercice
     registrar("Pepe", edm);
+    registrar("Eva", edm);
 
     if (!estaVacia(edm)){
         cout << "OK" << endl;
