@@ -72,8 +72,7 @@ void testRegistrarMago(){
     cout << "test escuela con magos: ";
 
     //excercice
-    registrar("Pepe", edm);     //nombres 100% ingleses
-    registrar ("Carlos", edm);
+    registrar("Pepe", edm);
 
     if (!estaVacia(edm)){
         cout << "OK" << endl;
@@ -90,10 +89,11 @@ void testVectores(){
 
     EscuelaDeMagia edm = fundarEscuela();
     registrar("Pepe", edm);
+    registrar("Pablo", edm);
 
     cout << "test vectores: ";
 
-    if (magos(edm).at(0) == "Pepe"){
+    if (magos(edm).at(0) == "Pepe" && magos(edm).at(1) == "Pablo"){
         cout << "OK" << endl;
     }else{
         lanzarExcepcion();
@@ -126,7 +126,7 @@ void testAprenderHechizos(){
 
 }
 
-void testUnEgresado(){
+void testUnExperto(){
 
     EscuelaDeMagia edm = fundarEscuela();
 
@@ -135,12 +135,75 @@ void testUnEgresado(){
 
     enseniar(crearHechizo("Patronus", 200), "Pepe", edm);
     enseniar(crearHechizo("Lumos", 50), "Pepe", edm);
+    enseniar(crearHechizo("Accio", 25), "Pepe", edm);
+
+    enseniar(crearHechizo("Accio", 25), "Pedro", edm);  ///linea que rompe
+
+
+    cout << "test un experto: ";
+
+    if (hayUnExperto(edm)) {
+
+        if (nombreMago(unEgresado(edm)) == "Pepe"){
+
+            cout << "OK" << endl;
+        }
+
+    }
+
+    else{
+
+        lanzarExcepcion();
+    }
+
+    destruirEscuela(edm);
+
+}
+
+void testQuitarExpertos(){
+
+    EscuelaDeMagia edm = fundarEscuela();
+
+    registrar("Pepe", edm);
+    registrar("Pedro", edm);
+
+    enseniar(crearHechizo("Patronus", 200), "Pepe", edm);
+    enseniar(crearHechizo("Lumos", 50), "Pepe", edm);
+    enseniar(crearHechizo("Accio", 25), "Pepe", edm);
+
     enseniar(crearHechizo("Accio", 25), "Pedro", edm);
 
-    cout << "test un egresado: ";
+    cout << "test egresar mago: ";
 
-    if (nombreMago(unEgresado(edm)) == "Pepe"){
+    quitarEgresado(edm);
 
+    if (nombreMago(unEgresado(edm)) == "Pedro"){
+        cout << "OK" << endl;
+    }
+    else{
+        lanzarExcepcion();
+    }
+
+
+
+    destruirEscuela(edm);
+
+}
+
+void testCantidadHechizosRestantesRespectoEscuela(){
+
+    EscuelaDeMagia edm = fundarEscuela();
+
+    registrar("Pepe", edm);
+    enseniar(crearHechizo("h1", 100), "Pepe", edm);
+    enseniar (crearHechizo("h2", 100), "Pepe", edm);
+
+    registrar("Pedro", edm);
+    enseniar(crearHechizo("h3", 100), "Pedro", edm);
+
+    cout << "test cantidad de hechizos mago - escuela: ";
+
+    if (leFaltanAprender("Pepe", edm) == 1 && leFaltanAprender("Pedro", edm) == 2){
         cout << "OK" << endl;
     }
     else{
@@ -151,14 +214,15 @@ void testUnEgresado(){
 
 }
 
-
 void bateriaTests(){
 
     testEscuelaVacia();
     testRegistrarMago();
-    //testVectores();
-    //testAprenderHechizos();
-    //testUnEgresado();
+    testAprenderHechizos();
+    testVectores();
+    testUnExperto();
+    testQuitarExpertos();
+    testCantidadHechizosRestantesRespectoEscuela();
 
 }
 
