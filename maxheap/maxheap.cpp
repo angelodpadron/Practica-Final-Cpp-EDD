@@ -132,6 +132,7 @@ void hundir(Mago* elems, int elemCount, int i) {
       if(sabeMasMago(ml, mp)) { // Si el hijo izquierdo sabe más que el actual
          intercambiar(elems, i, leftChild(i)); // Intercambio el contenido
          hundir(elems, elemCount, leftChild(i)); // Hago recursion hacia el hijo izquierdo
+         return;
       }
    }
 
