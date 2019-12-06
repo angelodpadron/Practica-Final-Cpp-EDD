@@ -18,11 +18,12 @@ Set hechizosAprendidos(EscuelaDeMagia m) {
    vector <string> nombreMagos = magos(m);
 
    for (size_t i = 0; i < nombreMagos.size(); i++){         ///orden m, m = cant magos
-        unionS(hechizosDe(nombreMagos[i], m), hechizos);    ///orden h² * O(log m), h = cantidad de hechizos, m = cantidad magos (claves en map)
+        hechizos = unionS(hechizosDe(nombreMagos[i], m), hechizos);    ///orden h² * O(log m), h = cantidad de hechizos, m = cantidad magos (claves en map)
    }
 
    return hechizos;
 }
+
 
 /// Proposito: Indica si existe un mago que sabe todos los hechizos enseñados por la escuela.
 /// Eficiencia: O(1)
@@ -58,8 +59,9 @@ void testEscuelaVacia(){
 
     ///Funciones testeadas: fundarEscuela(); estaVacia(EscuelaDeMagiaSt* m); destruirEscuela(EscuelaDeMagiaSt* m)
 
-    EscuelaDeMagia edm = fundarEscuela();
     cout << "test escuela vacia: ";
+
+    EscuelaDeMagia edm = fundarEscuela();
 
     if (estaVacia(edm)){
         cout << "OK" << endl;
@@ -75,8 +77,9 @@ void testRegistrarMago(){
 
     ///Funciones testeadas: registrar(String s, EscuelaDeMagiaSt* m).
 
-    EscuelaDeMagia edm = fundarEscuela();
     cout << "test escuela con magos: ";
+
+    EscuelaDeMagia edm = fundarEscuela();
 
     //excercice
     registrar("Pepe", edm);
@@ -95,11 +98,12 @@ void testVectores(){
 
     ///Funciones testeadas: magos(EscuelaDeMagiaSt* m).
 
+    cout << "test vectores: ";
+
     EscuelaDeMagia edm = fundarEscuela();
     registrar("Pepe", edm);
     registrar("Pablo", edm);
 
-    cout << "test vectores: ";
 
     if (magos(edm).at(0) == "Pepe" && magos(edm).at(1) == "Pablo"){
         cout << "OK" << endl;
@@ -112,7 +116,10 @@ void testVectores(){
 
 void testAprenderHechizos(){
 
-    /// Funciones testeadas: enseniar(Hechizo h, Set h); hechizosDe(String s, EscuelaDeMagiaSt* m).
+    /// Funciones testeadas: enseniar(Hechizo h, Set h); hechizosDe(String s, EscuelaDeMagiaSt* m);
+    ///hechizosAprendidos(EscuelaDeMagiaSt* m).
+
+    cout << "test aprender hechizos: ";
 
     //setup
     EscuelaDeMagia edm = fundarEscuela();
@@ -121,9 +128,9 @@ void testAprenderHechizos(){
     //excercice
     enseniar(h, "Pepe", edm);
 
-    cout << "test set hechizos: ";
 
-    if (belongsS(h, hechizosDe("Pepe", edm))){
+    if (belongsS(h, hechizosAprendidos(edm))){
+    //if (belongsS(h, hechizosDe("Pepe", edm))){
         cout << "OK" << endl;
     }
     else{
@@ -136,6 +143,8 @@ void testAprenderHechizos(){
 
 void testUnExperto(){
 
+    cout << "test un experto: ";
+
     EscuelaDeMagia edm = fundarEscuela();
 
     registrar("Pepe", edm);
@@ -146,9 +155,6 @@ void testUnExperto(){
     enseniar(crearHechizo("Accio", 25), "Pepe", edm);
 
     enseniar(crearHechizo("Accio", 25), "Pedro", edm);  ///linea que rompe
-
-
-    cout << "test un experto: ";
 
     if (hayUnExperto(edm)) {
 
@@ -170,6 +176,8 @@ void testUnExperto(){
 
 void testQuitarExpertos(){
 
+    cout << "test egresar mago: ";
+
     EscuelaDeMagia edm = fundarEscuela();
 
     registrar("Pepe", edm);
@@ -181,7 +189,6 @@ void testQuitarExpertos(){
 
     enseniar(crearHechizo("Accio", 25), "Pedro", edm);
 
-    cout << "test egresar mago: ";
 
     quitarEgresado(edm);
 
@@ -192,13 +199,13 @@ void testQuitarExpertos(){
         lanzarExcepcion();
     }
 
-
-
     destruirEscuela(edm);
 
 }
 
 void testCantidadHechizosRestantesRespectoEscuela(){
+
+    cout << "test cantidad de hechizos mago - escuela: ";
 
     EscuelaDeMagia edm = fundarEscuela();
 
@@ -209,7 +216,6 @@ void testCantidadHechizosRestantesRespectoEscuela(){
     registrar("Pedro", edm);
     enseniar(crearHechizo("h3", 100), "Pedro", edm);
 
-    cout << "test cantidad de hechizos mago - escuela: ";
 
     if (leFaltanAprender("Pepe", edm) == 1 && leFaltanAprender("Pedro", edm) == 2){
         cout << "OK" << endl;
@@ -226,8 +232,8 @@ void bateriaTests(){
 
     testEscuelaVacia();
     testRegistrarMago();
-    testAprenderHechizos();
     testVectores();
+    testAprenderHechizos();
     testUnExperto();
     testQuitarExpertos();
     testCantidadHechizosRestantesRespectoEscuela();
