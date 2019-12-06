@@ -12,13 +12,13 @@
 using namespace std;
 
 /// Proposito: Retorna todos los hechizos aprendidos por los magos.
-/// Eficiencia: ?
+/// Eficiencia: O (m.(h².log m))
 Set hechizosAprendidos(EscuelaDeMagia m) {
    Set hechizos = emptyS();
    vector <string> nombreMagos = magos(m);
 
    for (size_t i = 0; i < nombreMagos.size(); i++){         ///orden m, m = cant magos
-        unionS(hechizosDe(nombreMagos[i], m), hechizos);    ///orden h^2 * O(log m), h = cantidad de hechizos, m = cantidad magos (claves en map)
+        unionS(hechizosDe(nombreMagos[i], m), hechizos);    ///orden h² * O(log m), h = cantidad de hechizos, m = cantidad magos (claves en map)
    }
 
    return hechizos;
@@ -31,14 +31,14 @@ bool hayUnExperto(EscuelaDeMagia m) {
 }
 
 /// Proposito: Devuelve una maxheap con los magos que saben todos los hechizos dados por la escuela, quitándolos de la escuela.
-/// Eficiencia: ?
+/// Eficiencia: O(m.(log n + log n))
 MaxHeap egresarExpertos(EscuelaDeMagia m) {
 
     MaxHeap temp = emptyH();
 
-    while (hayUnExperto(m)){
-        insertH(unEgresado(m), temp);
-        quitarEgresado(m);
+    while (hayUnExperto(m)){                ///orden m, m = cant magos
+        insertH(unEgresado(m), temp);       ///orden log n
+        quitarEgresado(m);                  ///orden log n
 
     }
 
