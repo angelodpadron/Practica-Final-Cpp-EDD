@@ -75,10 +75,31 @@ void quitarEgresado(EscuelaDeMagia m) {
 /// Propósito: Enseña un hechizo a un mago existente, y si el hechizo no existe en la escuela es incorporado a la misma.
 /// O(m . log m + log h)
 void enseniar(Hechizo h, string nombre, EscuelaDeMagia m) {
+
     aprenderHechizo(h, lookupM(nombre, m ->magos)); ///orden en este punto: n.log n
     addS(h, m ->hechizos);
     //ACUTALIZAR HEAP
-    insertH(lookupM(nombre, m ->magos), m ->heap);
+
+    MaxHeap newHeap = emptyH();
+
+    insertH(lookupM(nombre, m -> magos), newHeap);
+
+    while (!isEmptyH(m ->heap)){
+
+        if (mismoMago(maxH(m ->heap), lookupM(nombre, m ->magos))){
+            deleteMax(m ->heap);
+        }
+        else{
+            insertH(maxH(m ->heap), newHeap);
+            deleteMax(m ->heap);
+        }
+
+    }
+
+    destroyH(m ->heap);
+
+    m ->heap = newHeap;
+
 }
 
 /// Propósito: Libera toda la memoria creada por la escuela (incluye magos, pero no hechizos).
