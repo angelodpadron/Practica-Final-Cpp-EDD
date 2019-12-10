@@ -32,12 +32,12 @@ Mago lookupBST(string nombre, BSTNode* node) {
         return NULL;
     }
 
-    while (node != NULL && node -> key != nombre){
+    if (node -> key != nombre){
         if (node -> key < nombre){
-            lookupBST(nombre, node -> left);
+            return lookupBST(nombre, node -> left);
         }
         else{
-            lookupBST(nombre, node -> right);
+            return lookupBST(nombre, node -> right);
         }
     }
 
